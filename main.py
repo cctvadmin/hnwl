@@ -30,12 +30,11 @@ def get_browser():
     :return:
     """
     chrome_options = Options()
-    chrome_options.add_argument('--headless')
+    chrome_options.add_argument("--mute-audio")  # 静音
+    chrome_options.add_argument('window-size=1920x1080')
     if _show_view == "False":
-        chrome_options.add_argument('window-size=1920x1080')
-        browser = webdriver.Chrome(chrome_options=chrome_options)
-    else:
-        browser = webdriver.Chrome()
+        chrome_options.add_argument('--headless')
+    browser = webdriver.Chrome(chrome_options=chrome_options)
     browser.maximize_window()
     return browser
 
